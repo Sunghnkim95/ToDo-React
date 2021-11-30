@@ -1,22 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import TodoForm from './TodoForm'
+import TodoList from './TodoList'
 
-export default function Todo({ todo, toggleTodo }) {
+//const LOCAL_STORAGE_KEY = 'ToDoList'
 
-    function handleTodoClick(){
-        toggleTodo(todo.id)
+const Todo = (props) => {
+    const [todoList, setTodoList] = useState(localStorage.getItem('ToDoList') ? JSON.parse(localStorage.getItem('ToDoList')) : [])
+//localStorage.getItem('ToDoList') ? localStorage.getItem('ToDoList') :
+/*
+    useEffect(()=>{ 
+        const storedTodos = JSON.parse(localStorage.getItem('ToDoList'))
+        if (storedTodos) 
+        setTodoList(storedTodos)
+      }, [])
+*/
+    function addTodo(todo) {
+        let copy = [...todoList]
+        copy.push(todo)
+        setTodoList(copy)
+        localStorage.setItem('ToDoList', JSON.stringify(Array.from(copy)))
     }
 
-    return (
-        <div>
-            <label>
-                <input type="checkbox" checked={todo.complete}
-                    onChange={handleTodoClick}
-                />
-                {todo.name}
-            </label>
-        </div>
-    )
+    return <div className="todo">
+        <TodoForm addTodo={ addTodo }/>
+        <TodoList todoList={ todoList } />
+    </div>
 }
 
-//everytime we click, we call the handleTodoClick func, which calls our 
-//ToggleTodo func with the id of the todo from TodoList.js which resets our todoList vaiables to our new list of checked todos
+export default Todo;

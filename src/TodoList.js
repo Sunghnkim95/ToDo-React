@@ -1,11 +1,32 @@
-import React from 'react'
-import Todo from './Todo'
+import React, { useState } from 'react';
 
-export default function TodoList({ todos, toggleTodo }) {
 
-    return (
-        todos.map(todo =>{
-            return <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} />
-        })
-    )
+const TodoList = ({todoList}) => {
+    //const todoList = props.todoList;
+    //const todoListArr = [todoList]
+    const todoItems = todoList.map((todo) =>
+        <li key={todo.name}>
+            {todo}
+        </li>
+    );
+    //const todoItemsArr = []
+    console.log(todoList);
+    if(todoItems.length > 0){
+        return <>
+            <div className="everythingForToDoList" />
+                <h3 className="toDoListTitle">To Do List</h3>  
+                <ul className="individualToDo">{todoItems}</ul> 
+            <div/>
+        </>  
+    } else {
+        return <>
+        <div className="everythingForToDoList" />
+            <h3 className="toDoListTitle">To Do List</h3>  
+            <p className="nothingToDo">Nothing To Do</p> 
+        <div/>
+        </>
+    }
+
 }
+
+export default TodoList;
