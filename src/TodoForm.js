@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
-
-
-const TodoForm = ({addTodo}) => {
+const TodoForm = ({addTodo, newTodo, setNewTodo, refresh, setRefresh}) => {
     //const addTodo = props.addTodo;
-    const [newTodo, setNewTodo] = useState("")
 
     function onSubmit (event){
         event.preventDefault();
         addTodo(newTodo);
         setNewTodo('')
+        //setRefresh(false)
     }
     return <>
         <form className="everythingForToDoForm" />
@@ -22,7 +20,6 @@ const TodoForm = ({addTodo}) => {
             setNewTodo(event.target.value)
         }} />
         <button onClick={onSubmit} className="submitButton">Submit</button>
-        <button>Delete</button>
     </>
 }
 

@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+  }
+  /* https://www.nicepng.com/png/detail/122-1227593_gamebook-background-book-background-images-png.png */
+  .todo{
+
+    /* background: url(https://www.nicepng.com/png/detail/122-1227593_gamebook-background-book-background-images-png.png);
+    background-repeat: no-repeat center fixed;
+    width: 100%;
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+
+  }
